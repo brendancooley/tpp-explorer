@@ -8,11 +8,6 @@ tradeA <- read_csv('tradeA.csv')
 tradeA$ID <- as.character(seq(1, length(tradeA$ccode)))
 tradeA$tau_imput <- as.factor(tradeA$tau_imput)
 
-# cutpoints
-inv_imp_pen_sd <- sd(tradeA$inv_imp_pen)
-inv_imp_pen_cut <- mean(tradeA$inv_imp_pen)
-tradeA <- filter(tradeA, inv_imp_pen < inv_imp_pen_cut)
-
 # Country mapping
 C <- read_csv('IDE_ISIC.csv')
 c <- C %>% group_by(ccode, name) %>%
@@ -22,6 +17,7 @@ shinyServer(function(input, output) {
   
   trade_dat <- reactive({
     t <- tradeA
+    t <- filter(tradeA, inv_imp_pen_elast < input$maxxval)
     if (input$imp_comp == 'yes') {
       t <- filter(tradeA, net_imp_tv > 0) 
     }
