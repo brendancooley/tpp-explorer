@@ -3,8 +3,6 @@ title: tpp-explorer
 account: brendancooley
 server: shinyapps.io
 appId: 159531
-bundleId: 725916
+bundleId: 730748
 url: https://brendancooley.shinyapps.io/tpp-explorer/
-when: 1488154570.46069
-asMultiple: FALSE
-asStatic: FALSE
+when: 1488435263.76024

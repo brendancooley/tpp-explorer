@@ -19,7 +19,7 @@ shinyServer(function(input, output) {
     t <- tradeA
     t <- filter(tradeA, inv_imp_pen_elast < input$maxxval)
     if (input$imp_comp == 'yes') {
-      t <- filter(tradeA, net_imp_tv > 0) 
+      t <- filter(t, net_imp_tv > 0) 
     }
     if (input$tar_type == 'MFN') {
       if (input$ntb == 'yes') {
